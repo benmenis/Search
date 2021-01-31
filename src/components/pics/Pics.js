@@ -1,9 +1,15 @@
 import React from 'react';
+import Searchbar from '../Searchbar';
 
 const Pics = () => {
+    
+    const onSubmit = () => {
+
+    };
+
     return(
         <div>
-            Pics
+            <Searchbar onSubmit={onSubmit} placeholder = "Search for picture"/>
         </div>
     );
 };
