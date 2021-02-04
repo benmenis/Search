@@ -11,10 +11,15 @@ import { makeStyles } from '@material-ui/core/styles';
 const KEY = 'AIzaSyA7VzvRCPYCH1kAnihsY9iIHmuE773sRSI';
 
 const useStyle = makeStyles({
-
+    list:{
+        overflowY: 'scroll',
+        height: '500px'
+    }
 });
 
 const Videos = () => {
+    const classes = useStyle();
+
     const [videos, setVideos] = useState([]);
     const [term, setTerm] = useState('buildings');
     const [selectedVideo, setSelectedVideo] = useState(null);
@@ -24,7 +29,7 @@ const Videos = () => {
             const response = await Youtube.get('/search',
                 {params:{
                     part: 'snippet',
-                    maxResults: 5,
+                    maxResults: 10,
                     key: KEY,
                     type: 'video',
                     q: term
@@ -49,7 +54,7 @@ const Videos = () => {
     }
 
     return(
-        <div>
+        <div >
             <Searchbar
                 onSubmit = {onSubmit} 
                 placeholder = "Search for video"
@@ -61,7 +66,7 @@ const Videos = () => {
                     </Container>
                 </Grid>
                 <Grid item xs={4}>
-                    <Container>
+                    <Container className={classes.list}>
                         <VideoList videos={videos} onClick={onVideoSelected} />
                     </Container>
                 </Grid>

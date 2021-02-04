@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyle = makeStyles({
     media:{
         width: '100%',
-        
+        height: '100%'
     }
 });
 
@@ -28,7 +28,9 @@ const VideoDetails = ({video}) => {
                     <Card >
                         <CardActionArea>
                             <CardMedia className={classes.media}>
+                            <div className="ui embed">
                                 <iframe title="video" src={videoSrc} />
+                            </div>
                             </CardMedia>
                             <CardContent>
                             <Typography >
