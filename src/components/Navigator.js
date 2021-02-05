@@ -3,11 +3,20 @@ import Content from './Content';
 
 import { useHistory } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
+import ToolBar from '@material-ui/core/Toolbar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Container from '@material-ui/core/Container';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyle = makeStyles({
+    grow: { flexGrow: 1 },
+});
+
 
 const Navigator = () => {
+    const classes = useStyle();
+
     const [value, setValue] = useState(0);
     const history = useHistory();
 
@@ -31,11 +40,15 @@ const Navigator = () => {
     return(
         <div>
             <AppBar position="static">
-                <Tabs value={value} onChange={handleTabChange} variant="fullWidth" aria-label="nav tabs example" >
+                <ToolBar>
+                <Tabs value={value} onChange={handleTabChange}  aria-label="nav tabs example" >
                     <Tab value={0} label="videos" />
                     <Tab value={1} label="pics" />
                     <Tab value={2} label="terms" />
                 </Tabs>
+                <div className={classes.grow} />
+                <p>english</p>
+                </ToolBar>
             </AppBar>
             <Container maxWidth="lg">
                 <Content />
