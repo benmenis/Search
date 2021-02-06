@@ -58,7 +58,7 @@ const Searchbar = ({ onSubmit, placeholder }) => {
             <Button  onClick={handleClear}>
                 X
             </Button>
-    `   </Paper>
+        </Paper>
         </>
     );
 };

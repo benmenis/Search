@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Content from './Content';
 
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
 import Tabs from '@material-ui/core/Tabs';
@@ -13,11 +13,14 @@ const useStyle = makeStyles({
     grow: { flexGrow: 1 },
 });
 
+const defVal = {'videos': 0, 'pics': 1, 'terms': 2};
 
 const Navigator = () => {
     const classes = useStyle();
 
-    const [value, setValue] = useState(0);
+    const { navItem } = useParams();
+
+    const [value, setValue] = useState(defVal[navItem]);
     const history = useHistory();
 
     const handleTabChange = (event, newVal) => {
