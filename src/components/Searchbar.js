@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
         padding: '2px 4px',
         display: 'flex',
         alignItems: 'center',
-        width: '50%',
+        width: '70%',
     },
     input: {
       marginLeft: theme.spacing(1),
@@ -58,7 +58,7 @@ const Searchbar = ({ onSubmit, placeholder }) => {
             <Button  onClick={handleClear}>
                 X
             </Button>
-    `   </Paper>
+        </Paper>
         </>
     );
 };

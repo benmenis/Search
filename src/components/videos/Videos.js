@@ -12,12 +12,14 @@ const KEY = 'AIzaSyA7VzvRCPYCH1kAnihsY9iIHmuE773sRSI';
 
 const useStyle = makeStyles({
     list:{
-        overflowY: 'scroll',
-        height: '500px'
+        marginTop: '30px',
+        marginBottom:'20px'
     }
 });
 
-const Videos = () => {
+const placeholder = {0: 'search for video', 1: 'חפש וידאו'};
+
+const Videos = ({ lang }) => {
     const classes = useStyle();
 
     const [videos, setVideos] = useState([]);
@@ -51,26 +53,30 @@ const Videos = () => {
 
     const onVideoSelected = video => {
         setSelectedVideo(video);
+
+        let mainVideoTop = 0;
+        if(document.getElementsByClassName('vl') && document.getElementsByClassName('vl')[0]){
+            mainVideoTop = document.getElementsByClassName('vl')[0].offsetTop;
+        }
+        
+        window.scrollTo(mainVideoTop,mainVideoTop-20);
     }
 
     return(
         <div >
+
             <Searchbar
                 onSubmit = {onSubmit} 
-                placeholder = "Search for video"
+                placeholder = {placeholder[lang]}
             />
-            <Grid container spacing={2}>
-                <Grid item xs={8}>
-                    <Container maxWidth='lg'>
-                        <VideoDetails video={selectedVideo} />
-                    </Container>
-                </Grid>
-                <Grid item xs={4}>
-                    <Container className={classes.list}>
-                        <VideoList videos={videos} onClick={onVideoSelected} />
-                    </Container>
-                </Grid>
-            </Grid>
+
+            <Container className= 'vl' maxWidth='lg'>
+                <VideoDetails video={selectedVideo} />
+            </Container>
+
+            <Container className={classes.list}>
+                <VideoList videos={videos} onClick={onVideoSelected} />
+            </Container>
 
         </div>
     );

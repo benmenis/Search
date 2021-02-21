@@ -7,15 +7,15 @@ import { useParams } from 'react-router-dom';
 
 
 
-const Content = () => {
+const Content = ({ lang }) => {
     const { navItem } = useParams();
     switch( navItem ){
         case 'videos':
-            return <Videos />;
+            return <Videos lang={lang}/>;
         case 'pics':
-            return <Pics />;
+            return <Pics lang={lang}/>;
         case 'terms':
-            return <Terms />;
+            return <Terms lang={lang}/>;
     }
 };
 

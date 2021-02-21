@@ -13,6 +13,12 @@ import {
 
 
 const App = () => {
+  // 0 - english, 1 - hebrew
+  const [lang, setLang] = useState(0);
+
+  const changeLang = (newLang) => {
+    setLang(newLang);
+  };
 
   return (
     <div className="App">
@@ -21,7 +27,7 @@ const App = () => {
 
           <Switch>
             <Route exact path='/:navItem'>
-              <Navigator />
+              <Navigator lang={lang} changeLang={changeLang}/>
             </Route>
             <Redirect to = '/videos' />
           </Switch>

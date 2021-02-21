@@ -12,10 +12,17 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyle = makeStyles({
     media:{
-        width: '100%',
-        height: '100%'
+        width: 0.80*window.innerWidth 
     }
 });
+
+ const getParEllSize = (clNm) => {
+    let wid = 0
+    if(document.getElementsByClassName('caa') && document.getElementsByClassName('caa')[0]){
+        wid = document.getElementsByClassName('caa')[0].offsetWidth;
+    }
+     return wid;
+ }
 
 
 const VideoDetails = ({video}) => {
@@ -26,7 +33,7 @@ const VideoDetails = ({video}) => {
             return(
                 <div>
                     <Card >
-                        <CardActionArea>
+                        <CardActionArea >
                             <CardMedia className={classes.media}>
                             <div className="ui embed">
                                 <iframe title="video" src={videoSrc} />
