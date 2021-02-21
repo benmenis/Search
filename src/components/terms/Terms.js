@@ -26,9 +26,6 @@ const Terms = ({ lang }) => {
 
     const [term, setTerm] = useState('buildings');
     const [wikiRes, setWikiRes] = useState([]);
-    const [selctedImage, setSelectedImage] = useState(null);
-
-    // console.log(wikiRes)
 
 
     useEffect(() => {
@@ -56,6 +53,7 @@ const Terms = ({ lang }) => {
         setTerm(newTerm);
     };
 
+
     const renderedResults = wikiRes.map( result => {
         return(
             <div key={result.pageid} className="item">
@@ -73,7 +71,7 @@ const Terms = ({ lang }) => {
                             className="ui button"
                             href={`https://en.wikipedia.org?curid=${result.pageid}`}
                         >
-                            GO
+                            {lang == 0 ? 'GO' : 'עבור'}
                         </a>
                     </div>
                     </ToolBar>
